@@ -34,7 +34,16 @@
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.site.skip>true</maven.site.skip>
         <graylog.version>2.4.0</graylog.version>
+        <splunk-logging.version>1.8.0</splunk-logging.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>spring-libs-release</id>
+            <name>Spring Lib Release Repository</name>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -42,6 +51,11 @@
             <artifactId>auto-value</artifactId>
             <version>${auto-value.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.splunk.logging</groupId>
+            <artifactId>splunk-library-javalogging</artifactId>
+            <version>${splunk-logging.version}</version>
         </dependency>
     </dependencies>
 
