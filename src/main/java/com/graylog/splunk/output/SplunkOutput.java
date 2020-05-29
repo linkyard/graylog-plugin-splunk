@@ -158,6 +158,12 @@ public class SplunkOutput implements MessageOutput {
                             ConfigurationField.Optional.OPTIONAL)
             );
 
+            configurationRequest.addField(new TextField(
+                            CK_SPLUNK_TOKEN, "Splunk Token", "",
+                            "Authentication Token for HTTPS",
+                            ConfigurationField.Optional.OPTIONAL)
+            );
+
             final Map<String, String> protocols = ImmutableMap.of("TCP", "TCP", "HEC", "HTTPS");
             configurationRequest.addField(new DropdownField(
                             CK_SPLUNK_PROTOCOL, "Splunk Protocol", "TCP", protocols,
