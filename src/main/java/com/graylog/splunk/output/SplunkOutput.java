@@ -164,7 +164,7 @@ public class SplunkOutput implements MessageOutput {
                             ConfigurationField.Optional.OPTIONAL)
             );
 
-            final Map<String, String> protocols = ImmutableMap.of("TCP", "TCP", "HEC", "HTTPS");
+            final Map<String, String> protocols = ImmutableMap.of("TCP", "TCP", "HTTPS", "HTTPS");
             configurationRequest.addField(new DropdownField(
                             CK_SPLUNK_PROTOCOL, "Splunk Protocol", "TCP", protocols,
                             "Protocol that should be used to send messages to Splunk",
