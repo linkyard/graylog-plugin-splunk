@@ -33,8 +33,7 @@ public class HECSender implements Sender {
     @Override
     public void initialize() {
         Map<String, String> metadata = ImmutableMap.of();
-        // TODO: Make batch sizing configurable?
-        this.sender = new HttpEventCollectorSender(endpoint.toString(), token, null, "Raw", 0, 100, 10, "parallel", metadata);
+        this.sender = new HttpEventCollectorSender(endpoint.toString(), token, null, "Raw", 1000, 100, 100, "parallel", metadata);
     }
 
     @Override
