@@ -52,8 +52,7 @@ public class HECSender implements Sender {
                 properties.put(field.getKey(), value == null ? null : value.toString());
             }
         }
-        // TODO: Determine if using fields as properties are redundant
-        this.sender.send("", message.getMessage(), "", "", properties, (String)null, "");
+        this.sender.send("", message.getMessage(), "", "", properties, (String) null, "");
     }
 
     @Override
