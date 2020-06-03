@@ -49,7 +49,6 @@ public class HECSender implements Sender {
             properties = new HashMap<>(message.getFieldCount());
             for (Map.Entry<String, Object> field : message.getFieldsEntries()) {
                 Object value = field.getValue();
-                // TODO: Determine if toString is sufficient or needs an actual serializer
                 properties.put(field.getKey(), value == null ? null : value.toString());
             }
         }
