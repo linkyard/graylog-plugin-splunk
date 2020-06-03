@@ -1,12 +1,15 @@
 package com.graylog.splunk.output.senders;
 
 import com.google.common.collect.ImmutableMap;
+import com.splunk.logging.HttpEventCollectorErrorHandler;
+import com.splunk.logging.HttpEventCollectorEventInfo;
 import org.graylog2.plugin.Message;
 import com.splunk.logging.HttpEventCollectorSender;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HECSender implements Sender {
@@ -18,6 +21,13 @@ public class HECSender implements Sender {
     public HECSender(String protocol, String hostname, int port, String token) throws URISyntaxException {
         this.endpoint = new URI(protocol, null, hostname, port, null, null, null);
         this.token = token;
+        HttpEventCollectorErrorHandler.onError(new HttpEventCollectorErrorHandler.ErrorCallback() {
+            @Override
+            public void error(List<HttpEventCollectorEventInfo> list, Exception e) {
+                System.out.println("ERROR: Sending to HEC-Output (" + endpoint.toString() + ") failed: " + e.toString());
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
